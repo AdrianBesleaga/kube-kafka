@@ -10,4 +10,4 @@ $KAFKA_HOME/bin/kafka-run-class.sh \
 	kafka-headless.kafka:29092 \
 	10.244.2.8:2181 \
 	perf-rep2 \
-	5000
+	10000
