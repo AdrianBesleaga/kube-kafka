@@ -10,7 +10,7 @@ do
 	echo ""
 	echo "Record size: $i"
 	$KAFKA_HOME/bin/kafka-producer-perf-test.sh --topic perf-rep2 \
-		--num-records 10000000 \
+		--num-records 5000000 \
 		--record-size $i \
 		--throughput -1 \
 		--producer.config $MY_DIR/conf/producer.properties

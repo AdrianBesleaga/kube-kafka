@@ -8,4 +8,5 @@ MY_DIR=`cd $MY_DIR/../; pwd`
 # Setup
 $KAFKA_HOME/bin/kafka-topics.sh --zookeeper $ZK --create --topic perf-rep1 --partitions $NUM_PARTITION --replication-factor 1
 $KAFKA_HOME/bin/kafka-topics.sh --zookeeper $ZK --create --topic perf-rep2 --partitions $NUM_PARTITION --replication-factor 2
+$KAFKA_HOME/bin/kafka-topics.sh --zookeeper $ZK --create --topic perf-size-effect --partitions $NUM_PARTITION --replication-factor 2
 
