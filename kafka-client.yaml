@@ -7,8 +7,8 @@ metadata:
 spec:
   volumes:
     - name: shared-vol
-    persistentVolumeClaim:
-      claimName: kafka-client-data
+      persistentVolumeClaim:
+        claimName: kafka-client-data
   containers:
   - name: kafka-client
     image: "wurstmeister/kafka:2.12-2.3.0"
