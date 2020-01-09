@@ -44,15 +44,6 @@ spec:
         containerPort: 29093
         usedForInnerBrokerCommunication: false
         usedForControllerCommunication: true
-    externalListeners:
-      - type: "ssl"
-        name: "external"
-        externalStartingPort: 19090
-        containerPort: 9094
-    sslSecrets:
-      tlsSecretName: "test-kafka-operator"
-      jksPasswordName: "test-kafka-operator-pass"
-      create: true
   cruiseControlConfig:
     topicConfig:
       partitions: 6 
