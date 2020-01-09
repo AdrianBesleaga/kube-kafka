@@ -3,11 +3,19 @@ kind: Pod
 metadata:
   annotations:
     linkerd.io/inject: enabled
-  name: kafka-test
+  name: kafka-client
 spec:
+  volumes:
+    - name: shared-vol
+    persistentVolumeClaim:
+      claimName: kafka-client-data
   containers:
-  - name: kafka-test
+  - name: kafka-client
     image: "wurstmeister/kafka:2.12-2.3.0"
     # Just spin & wait forever
     command: [ "/bin/bash", "-c", "--" ]
     args: [ "while true; do sleep 3000; done;" ]
+    # Configure a mountpoint for the volume we defined above
+    volumeMounts:
+      - name: shared-vol
+        mountPath: /data
