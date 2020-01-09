@@ -7,7 +7,7 @@ MY_DIR=`cd $POC_HOME/../; pwd`
 
 
 $KAFKA_HOME/bin/kafka-producer-perf-test.sh --topic perf-rep1 \
-	--num-records 50000000 \
+	--num-records 5000000 \
 	--record-size 100 \
 	--throughput -1 \
 	--producer.config $MY_DIR/conf/producer.properties
