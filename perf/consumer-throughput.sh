@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MY_DIR=`dirname $0`
-MY_DIR=`cd $POC_HOME/../; pwd`
+MY_DIR=`cd $MY_DIR/../; pwd`
 
 . $MY_DIR/conf/env.sh
 
