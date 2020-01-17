@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    linkerd.io/inject: enabled
+  name: kafka-client
+spec:
+  volumes:
+    - name: shared-vol
+      persistentVolumeClaim:
+        claimName: kafka-client-data
+  containers:
+  - name: kafka-client
+    image: "wurstmeister/kafka:2.12-2.3.0"
+    # Just spin & wait forever
+    command: [ "/opt/kafka/bin/kafka-producer-perf-test.sh", 
+      "--topic", "perf-rep2",
+      "--num-records", "10000000",
+      "--record-size", "100",
+      "--throughput", "-1",
+      "--producer.config", "/data/kube-kafka/conf/producer.properties",
+      "2>&1 >> /data/kube-kafka/logs/$HOSTNAME.log" 
+    ]
+    # Configure a mountpoint for the volume we defined above
+    volumeMounts:
+      - name: shared-vol
+        mountPath: /data
