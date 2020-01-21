@@ -19,7 +19,9 @@ spec:
       mountPath: /data
   restartPolicy: Never
 
+
 ---
+
 
 apiVersion: v1
 kind: Pod
@@ -42,9 +44,11 @@ spec:
       mountPath: /data
   restartPolicy: Never
 
-  ---
 
-  apiVersion: v1
+---
+
+
+apiVersion: v1
 kind: Pod
 metadata:
   annotations:
