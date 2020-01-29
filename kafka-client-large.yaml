@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    linkerd.io/inject: enabled
+  name: kafka-client-large
+spec:
+  volumes:
+    - name: shared-vol
+      persistentVolumeClaim:
+        claimName: kafka-client-data
+  containers:
+  - name: kafka-client
+    image: "wurstmeister/kafka:2.12-2.3.0"
+    resources:
+      requests:
+        memory: 4G
+        cpu: 2
+      limits:
+        memory: 8G
+        cpu: 4
+    # Just spin & wait forever
+    command: [ "tail", "-f", "/dev/null" ]
+    # Configure a mountpoint for the volume we defined above
+    volumeMounts:
+      - name: shared-vol
+        mountPath: /data
