@@ -13,8 +13,16 @@ spec:
   clusterImage: "wurstmeister/kafka:2.12-2.3.0"
   readOnlyConfig: |
     auto.create.topics.enable=false
+    auto.leader.rebalance.enable=true
   brokerConfigGroups:
     default:
+      resourceRequirements:
+        requests:
+          memory: 4G
+          cpu: "2"
+        limits:
+          memory: 8G
+          cpu: "4"
       storageConfigs:
         - mountPath: "/kafka-logs"
           pvcSpec:
