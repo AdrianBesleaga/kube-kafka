@@ -7,8 +7,10 @@ metadata:
 spec:
   headlessServiceEnabled: true
   zkAddresses:
-      - "10.244.2.18:2181,10.244.0.41:2181,10.244.1.13:2181"
-      zkPath: "/kafka"
+    - "10.244.2.18:2181"
+    - "10.244.0.41:2181"
+    - "10.244.1.13:2181"
+  zkPath: "/kafka"
   propagateLabels: true
   oneBrokerPerNode: false
   clusterImage: "wurstmeister/kafka:2.12-2.3.0"
