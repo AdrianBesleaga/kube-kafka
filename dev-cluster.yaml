@@ -3,12 +3,12 @@ kind: KafkaCluster
 metadata:
   labels:
     controller-tools.k8s.io: "1.0"
-  name: kafka
+  name: dev-kafka
 spec:
   headlessServiceEnabled: true
   zkAddresses:
       - "10.244.2.18:2181,10.244.0.41:2181,10.244.1.13:2181"
-      zkPath: "/kafka"
+      zkPath: "/dev-kafka"
   propagateLabels: true
   oneBrokerPerNode: false
   clusterImage: "wurstmeister/kafka:2.12-2.3.0"
@@ -18,12 +18,9 @@ spec:
   brokerConfigGroups:
     default:
       resourceRequirements:
-        requests:
-          memory: 4G
-          cpu: "2"
         limits:
-          memory: 8G
-          cpu: "4"
+          memory: 4G
+          cpu: "1"
       storageConfigs:
         - mountPath: "/kafka-logs"
           pvcSpec:
@@ -32,17 +29,13 @@ spec:
               - ReadWriteOnce
             resources:
               requests:
-                storage: 100Gi
+                storage: 50Gi
   brokers:
     - id: 0
       brokerConfigGroup: "default"
     - id: 1
       brokerConfigGroup: "default"
     - id: 2
-      brokerConfigGroup: "default"
-    - id: 3
-      brokerConfigGroup: "default"
-    - id: 4
       brokerConfigGroup: "default"
   rollingUpgradeConfig:
     failureThreshold: 1
