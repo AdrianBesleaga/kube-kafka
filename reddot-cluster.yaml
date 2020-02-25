@@ -60,6 +60,13 @@ spec:
         usedForInnerBrokerCommunication: false
         usedForControllerCommunication: true
   cruiseControlConfig:
+    resourceRequirements:
+     limits:
+       memory: "4Gi"
+       cpu: "4"
+     requests:
+       memory: "2Gi"
+       cpu: "2"
     topicConfig:
       partitions: 6 
       replicationFactor: 2
